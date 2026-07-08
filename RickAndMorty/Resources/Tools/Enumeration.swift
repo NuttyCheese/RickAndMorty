@@ -6,3 +6,14 @@
 //
 
 import Foundation
+
+enum Sections {
+    case title(title: String)
+    
+    var text: String {
+        switch self {
+        case let .title(title):
+            title
+        }
+    }
+}

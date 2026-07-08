@@ -6,3 +6,18 @@
 //
 
 import Foundation
+
+enum MainModel {
+    struct Response {
+        var data: [MainSection]
+        
+        struct MainSection {
+            var section: Sections
+            var items: [Item]
+        }
+        
+        enum Item {
+            
+        }
+    }
+}

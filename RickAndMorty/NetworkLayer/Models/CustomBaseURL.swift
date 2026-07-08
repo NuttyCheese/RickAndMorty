@@ -6,3 +6,14 @@
 //
 
 import Foundation
+
+public enum CustomBaseURL {
+    case main
+    
+    public var url: URL {
+        switch self {
+        case .main:
+            URL(string: "")!
+        }
+    }
+}

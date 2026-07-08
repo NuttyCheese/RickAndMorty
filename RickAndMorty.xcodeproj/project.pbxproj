@@ -11,7 +11,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		7CC095AE2E9BA17900A9BCE6 /* Exceptions for "RickAndMorty" folder in "RickAndMorty" target */ = {
+		89D755772FE57B27006E04E5 /* Exceptions for "RickAndMorty" folder in "RickAndMorty" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				App/Info.plist,
@@ -21,10 +21,10 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		7CC0959E2E9BA17800A9BCE6 /* RickAndMorty */ = {
+		89D7556B2FE57B26006E04E5 /* RickAndMorty */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				7CC095AE2E9BA17900A9BCE6 /* Exceptions for "RickAndMorty" folder in "RickAndMorty" target */,
+				89D755772FE57B27006E04E5 /* Exceptions for "RickAndMorty" folder in "RickAndMorty" target */,
 			);
 			path = RickAndMorty;
 			sourceTree = "<group>";
@@ -45,7 +45,7 @@
 		7CC095932E9BA17800A9BCE6 = {
 			isa = PBXGroup;
 			children = (
-				7CC0959E2E9BA17800A9BCE6 /* RickAndMorty */,
+				89D7556B2FE57B26006E04E5 /* RickAndMorty */,
 				7CC0959D2E9BA17800A9BCE6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -74,7 +74,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				7CC0959E2E9BA17800A9BCE6 /* RickAndMorty */,
+				89D7556B2FE57B26006E04E5 /* RickAndMorty */,
 			);
 			name = RickAndMorty;
 			packageProductDependencies = (

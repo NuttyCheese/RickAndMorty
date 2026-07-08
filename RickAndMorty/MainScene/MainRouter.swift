@@ -5,4 +5,16 @@
 //  Created by Борис Павлов on 19.06.2026.
 //
 
-import Foundation
+import UIKit
+
+protocol IMainRouter {
+    
+}
+
+final class MainRouter {
+    weak var transitionHandler: UIViewController?
+}
+
+extension MainRouter: IMainRouter {
+    
+}
