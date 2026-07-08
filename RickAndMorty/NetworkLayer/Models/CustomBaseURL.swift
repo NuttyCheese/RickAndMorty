@@ -13,7 +13,7 @@ public enum CustomBaseURL {
     public var url: URL {
         switch self {
         case .main:
-            URL(string: "")!
+            URL(string: "https://rickandmortyapi.com")!
         }
     }
 }

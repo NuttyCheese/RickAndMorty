@@ -14,3 +14,21 @@ protocol INetworkRequest {
     var header: HTTPHeader? { get }
     var parameters: Parameters { get }
 }
+
+extension INetworkRequest {
+    var baseURL: CustomBaseURL { .main }
+    
+    var header: HTTPHeader? {
+        var headers = HTTPHeader()
+        
+        let defaultHeaders: [HeaderField] = [
+            .accept(.json)
+        ]
+        
+        for headerField in defaultHeaders {
+            headers[headerField.key] = headerField.value
+        }
+        
+        return headers
+    }
+}

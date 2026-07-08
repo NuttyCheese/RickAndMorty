@@ -59,10 +59,6 @@ extension ModuleCollectionViewController: UICollectionViewDataSource {
     func numberOfSections(in _: UICollectionView) -> Int {
         sections.count
     }
-    
-    func collectionView(_: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        sections[section].viewModels.count
-    }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard !sections.isEmpty, indexPath.section < sections.count,
@@ -114,7 +110,7 @@ private extension ModuleCollectionViewController {
         collectionView.keyboardDismissMode = .onDrag
         
         collectionView.registeringCellsInCollection(
-            
+            CharacterCollectionCell.self
         )
         view.subviewsOnView(collectionView)
         collectionView.fullScreen()
