@@ -37,6 +37,9 @@ final class NetworkService: INetworkService {
                 
                 do {
                     let decodedData = try JSONDecoder().decode(T.self, from: data)
+                    self.queue.async {
+                        completion(.success(decodedData))
+                    }
                 } catch {
                     self.queue.async {
                         completion(.failure(.failedToDecodeResponse(error)))

@@ -18,7 +18,7 @@ enum MainModule {
             router: router,
             presenter: presenter,
             worker: worker,
-            secionManager: sectionManager
+            sectionManager: sectionManager
         )
         
         view.interactor = interactor

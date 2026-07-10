@@ -11,6 +11,7 @@ final class CharacterCollectionCell: UICollectionViewCell {
     private let containerView = UIView()
     private let nameLabel = UILabel()
     private let iconImageView = UIImageView()
+    private weak var cellViewModel: CharacterViewModel?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -24,7 +25,10 @@ final class CharacterCollectionCell: UICollectionViewCell {
 
 extension CharacterCollectionCell: ICollectionViewCell {
     func configure(viewModel: ICellViewModel) {
+        guard let viewModel = viewModel as? CharacterViewModel else { return }
+        cellViewModel = viewModel
         
+        print("name - \(viewModel.name), id - \(viewModel.id)")
     }
 }
 

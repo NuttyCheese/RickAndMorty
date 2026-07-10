@@ -10,10 +10,12 @@ import Foundation
 enum RMEndpoints {
     case character(id: Int)
     case charactersPage(page: Int?)
-    case characterAvatar(id: Int)
     
-    case location
-    case episode
+    case location(id: Int)
+    case locationsPage(page: Int?)
+    
+    case episode(id: Int)
+    case episodesPage(page: Int?)
 }
 
 extension RMEndpoints: INetworkRequest {
@@ -21,9 +23,10 @@ extension RMEndpoints: INetworkRequest {
         switch self {
         case let .character(id): "/api/character/\(id)"
         case .charactersPage(_): "/api/character"
-        case let .characterAvatar(id): "/api/character/avatar/\(id)"
-        case .location: "/api/location"
-        case .episode: "/api/episode"
+        case let .location(id): "/api/location/\(id)"
+        case .locationsPage(_): "/api/location"
+        case let .episode(id): "/api/episode/\(id)"
+        case .episodesPage(_): "/api/episode"
         }
     }
     
@@ -36,6 +39,22 @@ extension RMEndpoints: INetworkRequest {
     var parameters: Parameters {
         switch self {
         case let .charactersPage(page):
+            var dict: [String: Int] = [:]
+            
+            if page != nil {
+                dict["page"] = page
+            }
+            
+            return .url(dict)
+        case let .locationsPage(page):
+            var dict: [String: Int] = [:]
+            
+            if page != nil {
+                dict["page"] = page
+            }
+            
+            return .url(dict)
+        case let .episodesPage(page):
             var dict: [String: Int] = [:]
             
             if page != nil {

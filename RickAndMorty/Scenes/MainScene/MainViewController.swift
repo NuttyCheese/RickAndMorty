@@ -12,7 +12,12 @@ protocol IMainView: IModuleCollectionView {
 }
 
 final class MainViewController: ModuleCollectionViewController {
-    var interactor: IMainInteractor?
+    var interactor: IMainInteractor!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        interactor.loadData()
+    }
 }
 
 extension MainViewController: IMainView {

@@ -17,7 +17,8 @@ final class MainPresenter {
 
 extension MainPresenter: IMainPresenter {
     func publish(data: MainModel.Response) {
-        
+        let sectionViewModel = data.data.map(mapData)
+        viewController?.update(sections: sectionViewModel)
     }
 }
 
@@ -28,7 +29,8 @@ private extension MainPresenter {
     
     func mapData(item: MainModel.Response.Item) -> ICellViewModel {
         switch item {
-            
+        case let .character(iconName, name, id, action):
+            CharacterViewModel(iconName: iconName, name: name, id: id, action: action)
         }
     }
 }

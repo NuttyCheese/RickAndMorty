@@ -8,6 +8,11 @@
 import Foundation
 
 enum MainModel {
+    struct Request {
+        var name: String
+        var iconName: String
+        var id: Int
+    }
     struct Response {
         var data: [MainSection]
         
@@ -17,7 +22,12 @@ enum MainModel {
         }
         
         enum Item {
-            
+            case character(
+                iconName: String,
+                name: String,
+                id: Int,
+                action: ((Int) -> Void)
+            )
         }
     }
 }
