@@ -8,7 +8,7 @@
 import UIKit
 
 protocol IMainRouter {
-    
+    func transitionById(from id: Int)
 }
 
 final class MainRouter {
@@ -16,5 +16,10 @@ final class MainRouter {
 }
 
 extension MainRouter: IMainRouter {
-    
+    func transitionById(from id: Int) {
+        let vc = CharacterDetailModule.build(id: id)
+        if let navVC = transitionHandler?.navigationController {
+            navVC.pushViewController(vc, animated: true)
+        }
+    }
 }

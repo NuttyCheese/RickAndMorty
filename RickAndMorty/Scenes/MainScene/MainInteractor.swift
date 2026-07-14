@@ -37,8 +37,9 @@ extension MainInteractor: IMainInteractor {
             guard let self else { return }
             
             let charSection = sectionManager.createCharactersSection(
-                characters: charaters) { id in
-                    print("press id character - \(id)")
+                characters: charaters) { [weak self] id in
+                    guard let self else { return }
+                    router.transitionById(from: id)
                 }
             
             sections.append(charSection)
