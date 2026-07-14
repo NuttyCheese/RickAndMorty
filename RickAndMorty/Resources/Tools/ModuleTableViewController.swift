@@ -76,7 +76,9 @@ private extension ModuleTableViewController {
         tableView.separatorStyle = .none
         
         tableView.registeringCellsInTable(
-            
+            AvatarTableCell.self,
+            DescriptionTableCell.self,
+            EpisodeTableCell.self
         )
         
         view.subviewsOnView(tableView)

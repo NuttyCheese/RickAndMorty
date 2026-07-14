@@ -11,13 +11,13 @@ final class DescriptionViewModel: ICellViewModel {
     let title: String
     let name: String
     let url: String
-    let action: ((String) -> Void)
+    let action: ((String) -> Void)?
     
     init(
         title: String,
         name: String,
         url: String,
-        action: @escaping (String) -> Void
+        action: ((String) -> Void)?
     ) {
         self.title = title
         self.name = name

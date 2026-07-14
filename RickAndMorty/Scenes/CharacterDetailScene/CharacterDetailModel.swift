@@ -14,11 +14,24 @@ enum CharacterDetailModel {
         
         struct CharacterDetailSection {
             var section: Sections
-            var item: [Item]
+            var items: [Item]
         }
         
         enum Item {
-            
+            case avatar(icon: String)
+            case description(
+                title: String,
+                name: String,
+                url: String,
+                action: ((String) -> Void)?
+            )
+            case episode(
+                name: String,
+                airDate: String,
+                episode: String,
+                url: String,
+                action: ((String) -> Void)
+            )
         }
     }
 }
