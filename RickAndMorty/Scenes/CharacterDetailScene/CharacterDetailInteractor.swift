@@ -88,17 +88,26 @@ extension CharacterDetailInteractor: ICharacterDetailInteractor {
                 }
             )
             
+            worker.fetchLoadEpisode(identifier: identifier) { episodes in
+                let episodeSection = self.sectionManager.createEpisodes(
+                    episodes: episodes ?? []
+                ) { urlEpisode in
+                    print("url episode - \(urlEpisode)")
+                }
+    
+                self.sections.append(avatarSection)
+                self.sections.append(nameSection)
+                self.sections.append(statusSection)
+                self.sections.append(speciesSection)
+                self.sections.append(typeSection)
+                self.sections.append(genderSection)
+                self.sections.append(originSection)
+                self.sections.append(locationSection)
+                self.sections.append(episodeSection)
+                
+                self.presenter.publish(data: CharacterDetailModel.Response(data: self.sections))
+            }
             
-            sections.append(avatarSection)
-            sections.append(nameSection)
-            sections.append(statusSection)
-            sections.append(speciesSection)
-            sections.append(typeSection)
-            sections.append(genderSection)
-            sections.append(originSection)
-            sections.append(locationSection)
-            
-            self.presenter.publish(data: CharacterDetailModel.Response(data: sections))
         }
     }
 }

@@ -16,6 +16,30 @@ final class CharacterDetailViewController: ModuleTableViewController {
         super.viewDidLoad()
         interactor.loadData()
     }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        guard section < sections.count else { return nil }
+        
+        // Показываем тайтл только для секции с эпизодами
+        if sections[section].title == CharacterDetailTitleSection.episodes.rawValue {
+            return sections[section].title
+        }
+        
+        // Для всех остальных секций возвращаем nil (заголовок не показывается)
+        return nil
+    }
+        
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        guard section < sections.count else { return 0 }
+        
+        // Для секции с эпизодами устанавливаем высоту
+        if sections[section].title == CharacterDetailTitleSection.episodes.rawValue {
+            return 44
+        }
+        
+        // Для остальных секций высота = 0 (заголовок не виден)
+        return 0
+    }
 }
 
 extension CharacterDetailViewController: ICharacterDetailView {

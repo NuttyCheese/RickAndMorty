@@ -26,8 +26,8 @@ final class MainSectionManager: IMainSectionManager {
                 id: character.id,
                 action: action
             )
-        }
+        } ?? []
         
-        return .init(section: .title(title: MainTitleScetion.characters.rawValue), items: characterItem ?? [])
+        return .init(section: .title(title: MainTitleScetion.characters.rawValue), items: characterItem)
     }
 }
