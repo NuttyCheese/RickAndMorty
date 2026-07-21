@@ -32,16 +32,6 @@ class ModuleCollectionViewController: UIViewController, UICollectionViewDelegate
         4
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-            
-        let screenBounds = UIScreen.main.bounds // или collectionView.bounds
-            
-        let width = screenBounds.width / 2.16
-        let height = screenBounds.height / 4
-            
-        return CGSize(width: width, height: height)
-    }
-    
     func cellViewModel(for indexPath: IndexPath) -> ICellViewModel? {
         guard indexPath.item < sections[indexPath.section].viewModels.count else { return nil }
         return sections[indexPath.section].viewModels[indexPath.item]

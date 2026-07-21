@@ -41,6 +41,16 @@ final class MainViewController: ModuleCollectionViewController {
         }
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+            
+        let screenBounds = UIScreen.main.bounds
+            
+        let width = screenBounds.width / 2.16
+        let height = screenBounds.height / 4
+            
+        return CGSize(width: width, height: height)
+    }
+    
     func collectionView(_ collectionView: UICollectionView,
                        layout collectionViewLayout: UICollectionViewLayout,
                        referenceSizeForFooterInSection section: Int) -> CGSize {

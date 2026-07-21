@@ -37,6 +37,9 @@ final class EpisodeDetailInteractor {
 
 extension EpisodeDetailInteractor: IEpisodeDetailInteractor {
     func loadData() {
-        
+        worker.fetchLoadData(identifier: identifier) { [weak self] episodeResult in
+            guard let self else { return }
+            print("\(#fileID) \(#function) \(#line) name = \(episodeResult?.name)")
+        }
     }
 }

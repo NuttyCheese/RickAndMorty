@@ -12,20 +12,20 @@ protocol ILocationDetailInteractor {
 }
 
 final class LocationDetailInteractor {
-    private let presenter: ILocationDetailPresenter!
-    private let router: ILocationDetailRouter!
-    private let worker: ILocationDetailWorker!
-    private let sectionManager: ILocationDetailSectionManager!
-    private let identifier: Int!
+    private let presenter: ILocationDetailPresenter
+    private let router: ILocationDetailRouter
+    private let worker: ILocationDetailWorker
+    private let sectionManager: ILocationDetailSectionManager
+    private let identifier: Int
     
     private var sections = [LocationDetailModel.Response.LocationDetailSection]()
     
     init(
-        presenter: ILocationDetailPresenter!,
-        router: ILocationDetailRouter!,
-        worker: ILocationDetailWorker!,
-        sectionManager: ILocationDetailSectionManager!,
-        identifier: Int!
+        presenter: ILocationDetailPresenter,
+        router: ILocationDetailRouter,
+        worker: ILocationDetailWorker,
+        sectionManager: ILocationDetailSectionManager,
+        identifier: Int
     ) {
         self.presenter = presenter
         self.router = router
@@ -37,7 +37,10 @@ final class LocationDetailInteractor {
 
 extension LocationDetailInteractor: ILocationDetailInteractor {
     func loadData() {
-        
+        worker.fetchLoadData(identifier: identifier) { [weak self] locationResult in
+            guard let self else { return }
+            print("\(#fileID) \(#function) \(#line) name = \(locationResult?.name)")
+        }
     }
 }
 

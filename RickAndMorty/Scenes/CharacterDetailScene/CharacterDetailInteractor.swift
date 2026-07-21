@@ -75,34 +75,54 @@ extension CharacterDetailInteractor: ICharacterDetailInteractor {
                 title: "Родной мира",
                 name: character?.origin.name ?? "",
                 url: character?.origin.url ?? "",
-                action: { urlOrigin in
-                    print("url origin - \(urlOrigin)")
+                action: { [weak self] urlOrigin in
+                    guard let self, let url = URL(string: urlOrigin) else { return }
+                    let id = Int(url.lastPathComponent) ?? 0
+                    router.transitionByLocation(from: id)
                 }
             )
             let locationSection = sectionManager.createDescriptions(
                 title: "Текущее местоположение",
                 name: character?.location.name ?? "",
                 url: character?.location.url ?? "",
-                action: { urlLocation in
-                    print("url location - \(urlLocation)")
+                action: { [weak self] urlLocation in
+                    guard let self, let url = URL(string: urlLocation) else { return }
+                    let id = Int(url.lastPathComponent) ?? 0
+                    router.transitionByLocation(from: id)
                 }
             )
             
             worker.fetchLoadEpisode(identifier: identifier) { episodes in
                 let episodeSection = self.sectionManager.createEpisodes(
                     episodes: episodes ?? []
-                ) { urlEpisode in
-                    print("url episode - \(urlEpisode)")
+                ) { [weak self] urlEpisode in
+                    guard let self, let url = URL(string: urlEpisode) else { return }
+                    let id = Int(url.lastPathComponent) ?? 0
+                    router.transitionByEpisode(from: id)
                 }
     
                 self.sections.append(avatarSection)
-                self.sections.append(nameSection)
-                self.sections.append(statusSection)
-                self.sections.append(speciesSection)
-                self.sections.append(typeSection)
-                self.sections.append(genderSection)
-                self.sections.append(originSection)
-                self.sections.append(locationSection)
+                if let name = character?.name, !name.isEmpty {
+                    self.sections.append(nameSection)
+                }
+                if let status = character?.status, !status.isEmpty {
+                    self.sections.append(statusSection)
+                }
+                if let species = character?.species, !species.isEmpty {
+                    self.sections.append(speciesSection)
+                }
+                if let type = character?.type, !type.isEmpty {
+                    self.sections.append(typeSection)
+                }
+                if let gender = character?.gender, !gender.isEmpty {
+                    self.sections.append(genderSection)
+                }
+                if let origin = character?.origin, !origin.name.isEmpty {
+                    self.sections.append(originSection)
+                }
+                if let location = character?.location, !location.name.isEmpty {
+                    self.sections.append(locationSection)
+                }
                 self.sections.append(episodeSection)
                 
                 self.presenter.publish(data: CharacterDetailModel.Response(data: self.sections))
