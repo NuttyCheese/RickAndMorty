@@ -36,7 +36,9 @@ final class LocationDetailInteractor {
 }
 
 extension LocationDetailInteractor: ILocationDetailInteractor {
-    
+    func loadData() {
+        
+    }
 }
 
 private extension LocationDetailInteractor {
